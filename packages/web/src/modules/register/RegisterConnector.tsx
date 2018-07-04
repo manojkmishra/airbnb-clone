@@ -1,6 +1,16 @@
 import * as React from "react";
 import { RegisterView } from "./ui/RegisterView";
 
-// export const RegisterConnector = () => <div>register page</div>;
+// container -> view
+// container -> connector -> view
+// controller -> connector -> view
+export class RegisterConnector extends React.PureComponent {
+  dummySubmit = async (values: any) => {
+    console.log('/src/modules/register/registerconnector.tsx--dummysubmit()-values=',values);
+    return null;
+  };
 
-export const RegisterConnector = () => <RegisterView/>;
+  render() {   console.log('/src/modules/register/registerconnector.tsx--this.props=',this.props);
+    return <RegisterView submit={this.dummySubmit} />;
+  }
+}
