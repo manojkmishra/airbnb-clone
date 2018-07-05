@@ -1,5 +1,6 @@
 import * as React from "react";
 import { RegisterView } from "./ui/RegisterView";
+import { RegisterController } from "@airbnb/controller";
 
 // container -> view
 // container -> connector -> view
@@ -10,7 +11,15 @@ export class RegisterConnector extends React.PureComponent {
     return null;
   };
 
-  render() {   console.log('/src/modules/register/registerconnector.tsx--this.props=',this.props);
-    return <RegisterView submit={this.dummySubmit} />;
+  render() {    console.log('/src/modules/register/registerconnector.tsx--this.props=',this.props);
+   // return <RegisterView submit={this.dummySubmit} />;
+   return ( 
+              <React.Fragment>
+              <RegisterController />
+              <RegisterView submit={this.dummySubmit} />
+              </React.Fragment>
+         
+          );
+    
   }
 }
