@@ -2,12 +2,10 @@ import { Connection } from "typeorm";
 import * as faker from "faker";
 
 import { User } from "../../../entity/User";
-import {
-  duplicateEmail,
-  emailNotLongEnough,
-  invalidEmail,
-  passwordNotLongEnough
+import {  duplicateEmail,
+  // emailNotLongEnough,  invalidEmail,  passwordNotLongEnough
 } from "./errorMessages";
+import {  emailNotLongEnough,  invalidEmail,  passwordNotLongEnough} from "@airbnb/common";
 import { TestClient } from "../../../utils/TestClient";
 import { createTestConn } from "../../../testUtils/createTestConn";
 
