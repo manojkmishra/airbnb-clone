@@ -6,18 +6,16 @@ import { RegisterController } from "@airbnb/controller";
 // container -> connector -> view
 // controller -> connector -> view
 export class RegisterConnector extends React.PureComponent {
-  dummySubmit = async (values: any) => {
-    console.log('/src/modules/register/registerconnector.tsx--dummysubmit()-values=',values);
-    return null;
-  };
-
+ // dummySubmit = async (values: any) => {
+ //   console.log('/src/modules/register/registerconnector.tsx--dummysubmit()-values=',values);
+ //   return null;
+ // };
   render() {    console.log('/src/modules/register/registerconnector.tsx--this.props=',this.props);
    // return <RegisterView submit={this.dummySubmit} />;
-   return ( 
-              <React.Fragment>
-              <RegisterController />
-              <RegisterView submit={this.dummySubmit} />
-              </React.Fragment>
+   return (              
+              <RegisterController >
+              {({ submit }) => <RegisterView submit={submit} />}
+              </RegisterController>
          
           );
     
