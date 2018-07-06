@@ -1,6 +1,12 @@
 {
     "private": true,
-    "workspaces": [
+    "workspaces": {
+      "packages": [
         "packages/*"
-    ]
-}
+      ],
+      "nohoist": [
+        "**/rimraf",
+        "**/rimraf/**"
+      ]
+    }
+  }
