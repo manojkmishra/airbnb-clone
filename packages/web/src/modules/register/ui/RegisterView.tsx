@@ -18,7 +18,7 @@ interface Props {
 
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
   render() {
-    console.log('/src/modules/register/ui/registerview.tsx--this.props=',this.props);
+    console.log('web/src/modules/register/ui/registerview.tsx--this.props=',this.props);
     
     return (
       <Form style={{ display: "flex" }}>

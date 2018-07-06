@@ -10,11 +10,11 @@ export class RegisterConnector extends React.PureComponent {
  //   console.log('/src/modules/register/registerconnector.tsx--dummysubmit()-values=',values);
  //   return null;
  // };
-  render() {    console.log('/src/modules/register/registerconnector.tsx--this.props=',this.props);
+  render() {    console.log('web/src/modules/register/registerconnector.tsx--this.props=',this.props);
    // return <RegisterView submit={this.dummySubmit} />;
    return (              
               <RegisterController >
-              {({ submit }) => <RegisterView submit={submit} />}
+              {({ submit }: { submit: any } ) => <RegisterView submit={submit} />}
               </RegisterController>
          
           );

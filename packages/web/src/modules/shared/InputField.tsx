@@ -11,7 +11,7 @@ export const InputField: React.SFC< FieldProps<any> & { prefix: React.ReactNode 
   ...props
 }) => {  const errorMsg = touched[field.name] && errors[field.name];
    
-    console.log('/src/modules/register/shared/inputfield.tsx--errors=',errors);
+    console.log('web/src/modules/register/shared/inputfield.tsx--errors=',errors);
          return (
                     <FormItem help={errorMsg} validateStatus={errorMsg ? "error" : undefined}>
                     <Input {...field} {...props} />
