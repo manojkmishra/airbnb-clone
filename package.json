@@ -1,12 +1,18 @@
 {
-    "private": true,
-    "workspaces": {
-      "packages": [
-        "packages/*"
-      ],
-      "nohoist": [
-        "**/rimraf",
-        "**/rimraf/**"
-      ]
-    }
+  "private": true,
+  "scripts": {
+    "build:server": "lerna run build --scope={@airbnb/common,@airbnb/server}"
+        },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/rimraf",
+      "**/rimraf/**"
+    ]
+  },
+  "devDependencies": {
+    "lerna": "^2.11.0"
   }
+}
