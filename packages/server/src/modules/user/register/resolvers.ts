@@ -16,7 +16,7 @@ export const resolvers: ResolverMap =
          const { email, password } = args;
          const userAlreadyExists = await User.findOne({ where: { email }, select: ["id"] });
          if (userAlreadyExists) { return [ { path: "email", message: duplicateEmail } ]; }
-         const user = User.create({ email,  password, confirmed:false });
+         const user = User.create({ email,  password, confirmed:true });
          await user.save();
          // if (process.env.NODE_ENV !== "test") 
           // { await sendEmail(  email,  await createConfirmEmailLink(url, user.id, redis)   );   }
