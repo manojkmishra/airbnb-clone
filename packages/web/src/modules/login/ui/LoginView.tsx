@@ -22,7 +22,7 @@ interface Props {
 }
 
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
-  render() {
+  render() { console.log('/web/modules/loginView.tsx-this.props=',this.props);
     return (
       <Form style={{ display: "flex" }}>
         <div style={{ width: 400, margin: "auto" }}>
