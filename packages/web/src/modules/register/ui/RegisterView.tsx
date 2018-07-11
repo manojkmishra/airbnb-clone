@@ -1,10 +1,10 @@
 import * as React from "react";
-import * as Antd from "antd";
 import { withFormik, FormikErrors, FormikProps, Field, Form } from "formik";
 import { validUserSchema } from "@airbnb/common";
 import { InputField } from "../../shared/InputField";
+import { Form as AntForm, Icon, Button } from "antd";
 
-const { Form: AntForm, Icon, Button } = Antd;
+// const { Form: AntForm, Icon, Button } = Antd;
 const FormItem = AntForm.Item;
 
 interface FormValues {
@@ -24,30 +24,20 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
       <Form style={{ display: "flex" }}>
         <div style={{ width: 400, margin: "auto" }}>
           <Field
-            name="email"
-            // tslint:disable-next-line:jsx-no-multiline-js
-            prefix={
-              <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-              // tslint:disable-next-line:jsx-curly-spacing
-            }
+            name="email"       
+            prefix={ <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any  }
             placeholder="Email"
             component={InputField}
           />
           <Field
             name="password"
             type="password"
-            // tslint:disable-next-line:jsx-no-multiline-js
-            prefix={
-              <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-              // tslint:disable-next-line:jsx-curly-spacing
-            }
+            prefix={ <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} /> as any  }
             placeholder="Password"
             component={InputField}
           />
           <FormItem>
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
+            <a className="login-form-forgot" href="">  Forgot password </a>
           </FormItem>
           <FormItem>
             <Button
