@@ -9,7 +9,7 @@ import { sendEmail } from "../../../utils/sendEmail";
 
 export const resolvers: ResolverMap = 
 {  Mutation: 
-    {   register: async (  _, args: GQL.IRegisterOnMutationArguments,// { redis, url }  
+    {   register: async (  _, args: GQL.IRegisterOnMutationArguments, { redis, url }  
        ) => 
        {  try {  await validUserSchema.validate(args, { abortEarly: false });
               } catch (err) { return formatYupError(err);   }
