@@ -25,7 +25,8 @@ export const startServer = async () => {
     schema: genSchema() as any,
     context: ({ request }) => ({
       redis,
-      url: request.protocol + "://" + request.get("host"),
+       url: request.protocol + "://" + request.get("host"),
+      // url:'http://localhost:4000',  // ------------for 10.0.2.2--------------android emulator-------email confirmation
       session: request.session,
       req: request
     })

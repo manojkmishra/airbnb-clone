@@ -5,30 +5,37 @@ import { LoginMutation, LoginMutationVariables } from "../../schemaTypes";
 import { normalizeErrors } from "../../utils/normalizeErrors";
 
 interface Props 
-{
-    children: ( data: {    submit: (  values: LoginMutationVariables ) => Promise<{ [key: string]: string; } | null>;  }
-               ) => JSX.Element | null;
+{ onSessionId?: (sessionId: string) => void;
+  children: (    data: {   submit: (  values: LoginMutationVariables  ) => Promise<{    [key: string]: string;   } | null>;    }
+           ) => JSX.Element | null;
 }
 
-class C extends React.PureComponent< ChildMutateProps<Props, LoginMutation, LoginMutationVariables>> 
+class C extends React.PureComponent<  ChildMutateProps<Props, LoginMutation, LoginMutationVariables>> 
 {  submit = async (values: LoginMutationVariables) => 
-    {  console.log('/controller/logincontroller/index.tsx-submit-values=',values);
-       const {  data: { login } } = await this.props.mutate({  variables: values  });
-       console.log("/controller/src/mod/logincont/response: ", login);
-       if (login) { return normalizeErrors(login); }
-          // show errors
-          // [{path: 'email': message: 'inval...'}]
-          // {email: 'invalid....'}
-       return null;
-    };
+   {   console.log('controler/logincontroler/index.tsx--values=',values);
+    const {  data: { login: { errors, sessionId }   }  } = await this.props.mutate({  variables: values  });
+    console.log("controler/logincontroler/index.tsx-response: ", errors, sessionId);
+    if (errors) {
+      // show errors
+      // [{path: 'email': message: 'inval...'}]
+      // {email: 'invalid....'}
+      return normalizeErrors(errors);
+    }
+    if (sessionId && this.props.onSessionId) { this.props.onSessionId(sessionId);  }
+    return null;
+  };
+
   render() {   return this.props.children({ submit: this.submit });  }
 }
 
 const loginMutation = gql`
   mutation LoginMutation($email: String!, $password: String!) {
     login(email: $email, password: $password) {
-      path
-      message
+      errors {
+        path
+        message
+      }
+      sessionId
     }
   }
 `;
