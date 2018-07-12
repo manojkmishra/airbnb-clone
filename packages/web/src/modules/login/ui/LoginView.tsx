@@ -5,20 +5,15 @@ import { loginSchema } from "@airbnb/common";
 import { Link } from "react-router-dom";
 
 import { InputField } from "../../shared/InputField";
+import { NormalizedErrorMap } from "@airbnb/controller";
 
 const FormItem = AntForm.Item;
 
-interface FormValues {
-  email: string;
-  password: string;
-}
+interface FormValues {  email: string;  password: string;}
 
 interface Props {
-  submit: (
-    values: FormValues
-  ) => Promise<{
-    [key: string]: string;
-  } | null>;
+ // submit: (   values: FormValues  ) => Promise<{    [key: string]: string;  } | null>;
+ submit: (values: FormValues) => Promise<NormalizedErrorMap | null>;
 }
 
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
