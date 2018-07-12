@@ -18,8 +18,8 @@ export const resolvers: ResolverMap =
          if (userAlreadyExists) { return [ { path: "email", message: duplicateEmail } ]; }
          const user = User.create({ email,  password, confirmed:true });
          await user.save();
-          if (process.env.NODE_ENV !== "test") 
-           { await sendEmail(  email,  await createConfirmEmailLink(url, user.id, redis)   );   }
+         if (process.env.NODE_ENV !== "test") 
+         {  await sendEmail(  email, await createConfirmEmailLink(url, user.id, redis), "confirm email"  );  }
          return null;
        }
   }
