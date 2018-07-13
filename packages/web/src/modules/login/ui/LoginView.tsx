@@ -23,38 +23,22 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
         <div style={{ width: 400, margin: "auto" }}>
           <Field
             name="email"
-            prefix={
-              <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-            }
+            prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any }
             placeholder="Email"
             component={InputField}
           />
           <Field
             name="password"
             type="password"
-            prefix={
-              <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-            }
+            prefix={  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} /> as any  }
             placeholder="Password"
             component={InputField}
           />
+          <FormItem> <Link to="/forgot-password">Forgot password</Link>  </FormItem>
           <FormItem>
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
+            <Button type="primary" htmlType="submit" className="login-form-button" >  login</Button>
           </FormItem>
-          <FormItem>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              login
-            </Button>
-          </FormItem>
-          <FormItem>
-            Or <Link to="/register">register</Link>
-          </FormItem>
+          <FormItem>  Or <Link to="/register">register</Link>  </FormItem>
         </div>
       </Form>
     );
