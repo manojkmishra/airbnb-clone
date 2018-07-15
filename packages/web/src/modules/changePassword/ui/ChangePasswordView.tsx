@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Form as AntForm, Icon, Button } from "antd";
 import { withFormik, FormikProps, Field, Form } from "formik";
-import { NormalizedErrorMap } from "@airbnb/controller";
+import { NormalizedErrorMap , ForgotPasswordChangeMutationVariables} from "@airbnb/controller";
 import { changePasswordSchema } from "@airbnb/common";
 
 import { InputField } from "../../shared/InputField";
@@ -10,7 +10,11 @@ const FormItem = AntForm.Item;
 
 interface FormValues {  newPassword: string;}
 
-interface Props {  submit: (values: FormValues) => Promise<NormalizedErrorMap | null>;}
+interface Props 
+{ onFinish: () => void;
+  key: string;
+  submit: ( values: ForgotPasswordChangeMutationVariables ) => Promise<NormalizedErrorMap | null>;
+}
 
 class C extends React.PureComponent<FormikProps<FormValues> & Props> 
 {  render() 
@@ -31,13 +35,14 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props>
   }
 }
 
-export const ChangePasswordView = withFormik<Props, FormValues>({
-  validationSchema: changePasswordSchema,
+export const ChangePasswordView = withFormik<Props, FormValues>(
+{ validationSchema: changePasswordSchema,
   mapPropsToValues: () => ({ newPassword: "" }),
-  handleSubmit: async (values, { props, setErrors }) => {
-    const errors = await props.submit(values);
-    if (errors) {
-      setErrors(errors);
-    }
+  handleSubmit: async ({ newPassword }, { props, setErrors }) => 
+  {
+    const errors = await props.submit({ newPassword, key: props.key });
+    if (errors) 
+    { setErrors(errors);
+    } else { props.onFinish();}
   }
 })(C);
